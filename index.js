@@ -24,13 +24,13 @@ function cleanup() {
 setInterval(cleanup, 3000)
 
 app.post('/sync', (req, res) => {
-  const { jobId, playerName, active, dotX, dotY, dotZ, target } = req.body
+  const { jobId, playerName, active, dotX, dotY, dotZ, target, velX, velY, velZ, startX, startY, startZ, tof } = req.body
   if (!jobId || !playerName) return res.status(400).json({ error: 'missing jobId or playerName' })
 
   if (!store[jobId]) store[jobId] = {}
 
   store[jobId][playerName] = {
-    data: { playerName, active: !!active, dotX, dotY, dotZ, target: target || '' },
+    data: { playerName, active: !!active, dotX, dotY, dotZ, target: target || '', velX, velY, velZ, startX, startY, startZ, tof },
     lastUpdate: Date.now()
   }
 
