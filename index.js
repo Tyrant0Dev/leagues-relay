@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 app.use(express.json())
 
-// jobId -> { playerName -> { data, lastUpdate } }
+
 const store = {}
 
 const STALE_MS = 5000
